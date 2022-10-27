@@ -1,17 +1,30 @@
 import java.awt.*;  
 import java.awt.event.WindowEvent;    
-import java.awt.event.WindowListener; 
+import java.awt.event.WindowListener;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Vector;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.util.*;
+import java.awt.event.*;
 
-
-public class AwtApp extends Frame {  
+public class AwtApp extends Frame{  
   
+/**
+ * 
+ */
 public AwtApp() {
-
-   
+    
+addWindowListener (new WindowAdapter() {    
+   public void windowClosing (WindowEvent e) {    
+   System.exit(0);  
+ }    
+}); 
 
 Frame frame = new Frame("solo singing"); 
 
-    
 Label firstName = new Label("First Name");  
 firstName.setBounds(20, 50, 80, 20);  
   
@@ -20,6 +33,9 @@ lastName.setBounds(20, 80, 80, 20);
   
 Label dob = new Label("Date of Birth");  
 dob.setBounds(20, 110, 80, 20);  
+
+Color formColor = new Color(135, 206, 235);
+setBackground(formColor);
 
 Label WhatsAppno = new Label("Contact Info");
 WhatsAppno.setBounds(20,140,80,20);
@@ -63,7 +79,6 @@ mech.setBounds(260, 270, 35, 20);
 
 Label extc = new Label("EXTC");  
 extc.setBounds(260, 290, 35, 20);  
-
 
 TextField firstNameTF = new TextField();  
 firstNameTF.setBounds(120, 50, 100, 20);  
@@ -110,8 +125,72 @@ pAst.setBounds(300, 190, 100, 20);
 Button sbmt = new Button("Submit");  
 sbmt.setBounds(20, 330, 100, 30);  
   
-Button reset = new Button("Reset");  
+Button reset = new Button("Next");  
 reset.setBounds(150,330,100,30);  
+
+sbmt.addActionListener(new ActionListener() {
+  public void actionPerformed(ActionEvent e) {
+     Vector v = new Vector<>();
+     Scanner sc = new Scanner(System.in);
+             
+         String a = WhatsAppNo.getText();
+         v.add("contact info = " + a);
+     
+         String b = firstNameTF.getText();
+         v.add("first name = " + b);
+
+         String c = lastNameTF.getText() ;
+         v.add("last name = " + c);
+
+         String d = dobTF.getText() ;
+         v.add("date of birth = " + d);
+           
+        Year.setLabel("FE"); 
+        Object z = Year.getSelectedObjects() ;
+        v.add("Click FE = " + z);
+           
+        YEar.setLabel("SE"); 
+        Object f = YEar.getSelectedObjects() ;
+        v.add("Click SE = " + f);
+
+        YeAr.setLabel("TE"); 
+        Object g = YeAr.getSelectedObjects() ;
+        v.add("Click TE = " + g);
+
+        YeaR.setLabel("BE"); 
+        Object  h = YeaR.getSelectedObjects() ;
+        v.add("Click BE = " + h);
+
+        com.setLabel("COMPS"); 
+        Object x = com.getSelectedObjects() ;
+        v.add("Click COMPS = " + x);
+
+        iT.setLabel("IT"); 
+        Object y = iT.getSelectedObjects() ;
+        v.add("Click IT = " + y);
+
+        mec.setLabel("MECH"); 
+        Object m = mec.getSelectedObjects() ;
+        v.add("CLick MECH = " + m);
+
+        ext.setLabel("EXTC"); 
+        Object n = ext.getSelectedObjects() ;
+        v.add("Click EXTC = " + n);
+
+        past.setLabel("YES"); 
+        Object o = past.getSelectedObjects() ;
+        v.add("Click YES = " + o);
+
+        pAst.setLabel("NO"); 
+        Object p = pAst.getSelectedObjects() ;
+        v.add("Click NO = " + p);
+
+         System.out.println("The entered info on page 3 is => ");
+         System.out.println(v);
+     
+      }
+});
+
 
 add(comp);
 add(it);
@@ -146,13 +225,17 @@ add(be);
 add(te);
 add(sbmt);  
 add(reset);  
-  
+
+   
+setTitle("Registration for Singing"); 
 setSize(400,500);  
 setLayout(null);  
 setVisible(true);  
-}  
+}
+
 public static void main(String[] args) {  
-// TODO Auto-generated method stub  
-AwtApp awt = new AwtApp();    
+AwtApp awt = new AwtApp(); 
+
+
 }  
-}  
+}
